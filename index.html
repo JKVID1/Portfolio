@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#111111" />
+  <title>JKVID</title>
+  <link rel="stylesheet" href="style.css?v=mockup-copy" />
+  <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/4.0.0/model-viewer.min.js"></script>
+</head>
+<body>
+  <div class="site-texture" aria-hidden="true"></div>
+
+  <header class="site-header">
+    <a class="brand" href="#top" aria-label="JKVID home">
+      <span class="brand-mark">JK</span>
+      <span>JKVID</span>
+    </a>
+
+    <nav class="nav" aria-label="Main navigation">
+      <a href="#about">About</a>
+      <a href="works/index.html">Works</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <main id="top" class="page">
+    <section class="hero">
+      <div class="hero-copy">
+        <p class="eyebrow">JION.KIM</p>
+
+        <h1 class="title">
+          <span id="typed"></span><span class="cursor">|</span>
+        </h1>
+
+        <p class="sub">
+          Motion Graphics · VFX · Music · Portfolio
+        </p>
+
+        <div class="meta" aria-label="Pointer position and location">
+          <span id="coords">x: 0, y: 0</span>
+          <span class="dot"></span>
+          <span>local</span>
+        </div>
+      </div>
+
+      <div class="hero-visual" aria-label="JKVID visual reel preview">
+        <div class="visual-topbar">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+        <div class="visual-stage">
+          <div class="model-logo" aria-label="JKVID 3D logo model preview">
+            <div class="model-glow" aria-hidden="true"></div>
+            <model-viewer
+              class="model-logo-viewer"
+              src="assets/jkvid-logo.glb?v=clean-1"
+              alt="JKVID 3D logo"
+              camera-controls
+              disable-zoom
+              interaction-prompt="none"
+              camera-orbit="0deg 104deg 0.94m"
+              min-camera-orbit="-12deg 96deg 0.84m"
+              max-camera-orbit="62deg 116deg 1.08m"
+              field-of-view="12deg"
+              shadow-intensity="0.9"
+              shadow-softness="0.95"
+              exposure="0.52"
+              environment-image="neutral"
+            ></model-viewer>
+            <div class="model-spotlight" aria-hidden="true"></div>
+            <div class="logo-shine" aria-hidden="true"></div>
+          </div>
+          <div class="scanline"></div>
+          <div class="frame-number">00:27:16</div>
+        </div>
+        <div class="timeline">
+          <p class="mockup-title"><span>J</span>ion <span>K</span>im <span>VID</span>eo</p>
+          <p class="mockup-line">Designing Motion, Sound, and Atmosphere.</p>
+          <p class="mockup-caption">
+            Where visuals meet sound.<br />
+            Crafting unreal moments with real detail.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section id="about" class="section-block reveal">
+      <div class="section-heading">
+        <p class="section-label">ABOUT</p>
+        <h2>About JKVIDEO</h2>
+        <p class="section-text">
+          (자기소개 나중에 쓰기)
+        </p>
+      </div>
+
+      <div class="about-list">
+        <div class="about-item">
+          <span class="about-name">Name</span>
+          <span class="about-value">JION KIM / 김지온</span>
+        </div>
+
+        <div class="about-item">
+          <span class="about-name">Education</span>
+          <span class="about-value">신한중학교 졸업<br>한국디지털미디어고등학교 디지털콘텐츠과 졸업<br>숭실대학교 경영학부 재학</span>
+        </div>
+
+        <div class="about-item">
+          <span class="about-name">Experience & Leadership</span>
+          <span class="about-value">한국디지털미디어고등학교 제23대 학생자치회 'SCOUD'<br>숭실대학교 제16대 경영대학 학생회 '결'</span>
+        </div>
+
+        <div class="about-item">
+          <span class="about-name">Multimedia Skills</span>
+          <span class="about-value">Adobe After Effects<br>Adobe Photoshop<br>Adobe Illustrator<br>Adobe InDesign<br>
+            Maxon Cinema 4D & Octane Render / Redshift<br>Derivative TouchDesigner<br>
+            Apple Logic Pro 12<br>Image-Line FL Studio 26<br>Native Instruments Kontakt 8</span>
+        </div>
+
+        <div class="about-item">
+          <span class="about-name">Certifications</span>
+          <span class="about-value">Adobe Certified Professional in Visual Design(International)<br>Adobe Certified Professional in Video Design(international)<br>
+          Adobe Certified Professional(ACP) Aftereffects<br>Adobe Certified Professional(ACP) Photoshop<br>Adobe Certified Professional(ACP) Premiere<br>
+          무인동력비행장치 4종(무인멀티콥터드론)<br>한국세무사회 전산회계 1급<br>한국세무사회 전산세무 2급<br>대한상공회의소 전산회계운용사 3급<br>삼일회계법인 민간공인 재경관리사<br>
+          Digital Information Ability Test(DIAT) 인터넷정보검색</span>
+        </div>
+
+        <div class="about-item">
+          <span class="about-name">Base</span>
+          <span class="about-value">Pyeongtaek-si, South Korea</span>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="section-block reveal">
+      <div class="section-heading">
+        <p class="section-label">CONTACT</p>
+        <h2>Contact Me</h2>
+        <p class="section-text">
+          작업 문의, 협업, 기타 연락
+        </p>
+      </div>
+
+      <div class="contact-list">
+        <a class="contact-item" href="mailto:jkvid0327@gmail.com">
+          <span class="contact-name">Email</span>
+          <span class="contact-value">jkvid0327@gmail.com</span>
+        </a>
+
+        <a class="contact-item" href="https://instagram.com/jkvid_" target="_blank" rel="noopener noreferrer">
+          <span class="contact-name">Instagram</span>
+          <span class="contact-value">@jkvid_</span>
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <script src="script.js?v=glb-logo-swing"></script>
+</body>
+</html>
