@@ -56,7 +56,30 @@ document
 const coords = document.getElementById("coords");
 const modelLogo = document.querySelector(".model-logo-viewer");
 const modelFrame = document.querySelector(".model-logo");
+const mockupTitle = document.querySelector(".mockup-title");
+const mockupPanel = document.querySelector(".timeline");
 let pointerFrame = null;
+let scrollFrame = null;
+
+function createBlobUrlFromDataUrl(dataUrl) {
+  const [header, base64] = dataUrl.split(",");
+  const mimeMatch = header.match(/data:([^;]+)/);
+  const mimeType = mimeMatch ? mimeMatch[1] : "model/gltf-binary";
+  const binary = atob(base64);
+  const bytes = new Uint8Array(binary.length);
+
+  for (let i = 0; i < binary.length; i += 1) {
+    bytes[i] = binary.charCodeAt(i);
+  }
+
+  return URL.createObjectURL(new Blob([bytes], { type: mimeType }));
+}
+
+if (modelLogo && window.JKVID_LOGO_GLB_DATA_URL) {
+  modelLogo.setAttribute("src", createBlobUrlFromDataUrl(window.JKVID_LOGO_GLB_DATA_URL));
+} else if (modelLogo && modelLogo.dataset.src) {
+  modelLogo.setAttribute("src", modelLogo.dataset.src);
+}
 
 const cameraState = {
   baseTheta: 0,
@@ -96,6 +119,41 @@ function updateModelPointer(event) {
   cameraState.targetPhi = cameraState.basePhi + y * 8;
 }
 
+function clamp(value, min, max) {
+  return Math.min(Math.max(value, min), max);
+}
+
+function easeInOut(value) {
+  return value * value * (3 - 2 * value);
+}
+
+function updateScrollDrivenMotion() {
+  if (modelLogo) {
+    cameraState.scrollTheta = Math.min(window.scrollY * 0.085, 52);
+    cameraState.targetTheta = cameraState.baseTheta + cameraState.scrollTheta;
+    cameraState.targetPhi = cameraState.basePhi;
+  }
+
+  if (mockupTitle && mockupPanel) {
+    const rect = mockupPanel.getBoundingClientRect();
+    const start = window.innerHeight * 0.78;
+    const end = window.innerHeight * 0.08;
+    const rawProgress = clamp((start - rect.top) / (start - end), 0, 1);
+    const nameProgress = easeInOut(rawProgress);
+
+    mockupTitle.style.setProperty("--name-progress", nameProgress.toFixed(3));
+  }
+}
+
+function requestScrollUpdate() {
+  if (scrollFrame) return;
+
+  scrollFrame = requestAnimationFrame(() => {
+    updateScrollDrivenMotion();
+    scrollFrame = null;
+  });
+}
+
 window.addEventListener("mousemove", (event) => {
   updateModelPointer(event);
 
@@ -109,20 +167,20 @@ window.addEventListener("mousemove", (event) => {
 
 window.addEventListener(
   "scroll",
-  () => {
-    if (!modelLogo) return;
-
-    cameraState.scrollTheta = Math.min(window.scrollY * 0.085, 52);
-    cameraState.targetTheta = cameraState.baseTheta + cameraState.scrollTheta;
-    cameraState.targetPhi = cameraState.basePhi;
-  },
+  requestScrollUpdate,
   { passive: true }
 );
+
+window.addEventListener("resize", requestScrollUpdate);
 
 if (modelLogo) {
   requestAnimationFrame(setModelOrbit);
 
   modelLogo.addEventListener("load", () => {
+    if (modelFrame) {
+      modelFrame.classList.add("is-model-loaded");
+    }
+
     modelLogo.model.materials.forEach((material) => {
       const pbr = material.pbrMetallicRoughness;
 
@@ -140,3 +198,5 @@ if (modelLogo) {
     });
   });
 }
+
+updateScrollDrivenMotion();

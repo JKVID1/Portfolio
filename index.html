@@ -5,18 +5,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="theme-color" content="#111111" />
   <title>JKVID</title>
-  <link rel="stylesheet" href="style.css?v=mockup-copy" />
+  <link rel="stylesheet" href="style.css?v=model-logo-glb" />
   <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/4.0.0/model-viewer.min.js"></script>
 </head>
 <body>
   <div class="site-texture" aria-hidden="true"></div>
 
   <header class="site-header">
-    <a class="brand" href="#top" aria-label="JKVID home">
-      <span class="brand-mark">JK</span>
-      <span>JKVID</span>
-    </a>
-
     <nav class="nav" aria-label="Main navigation">
       <a href="#about">About</a>
       <a href="works/index.html">Works</a>
@@ -55,15 +50,15 @@
             <div class="model-glow" aria-hidden="true"></div>
             <model-viewer
               class="model-logo-viewer"
-              src="assets/jkvid-logo.glb?v=clean-1"
+              data-src="assets/jkvid-logo.glb?v=clean-1"
               alt="JKVID 3D logo"
-              camera-controls
               disable-zoom
               interaction-prompt="none"
               camera-orbit="0deg 104deg 0.94m"
               min-camera-orbit="-12deg 96deg 0.84m"
               max-camera-orbit="62deg 116deg 1.08m"
               field-of-view="12deg"
+              loading="eager"
               shadow-intensity="0.9"
               shadow-softness="0.95"
               exposure="0.52"
@@ -76,7 +71,9 @@
           <div class="frame-number">00:27:16</div>
         </div>
         <div class="timeline">
-          <p class="mockup-title"><span>J</span>ion <span>K</span>im <span>VID</span>eo</p>
+          <p class="mockup-title" aria-label="Jion Kim VIDeo">
+            <span class="mockup-key">J</span><span class="mockup-expand">ion </span><span class="mockup-key">K</span><span class="mockup-expand">im </span><span class="mockup-key">VID</span><span class="mockup-expand">eo</span>
+          </p>
           <p class="mockup-line">Designing Motion, Sound, and Atmosphere.</p>
           <p class="mockup-caption">
             Where visuals meet sound.<br />
@@ -153,6 +150,7 @@
     </section>
   </main>
 
-  <script src="script.js?v=glb-logo-swing"></script>
+  <script src="assets/jkvid-logo-data.js?v=model-logo-restore"></script>
+  <script src="script.js?v=title-smooth-scroll"></script>
 </body>
 </html>
